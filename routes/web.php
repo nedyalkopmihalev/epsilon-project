@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Network\NetworkController;
+use App\Http\Controllers\Services\ServicesController;
+use App\Http\Controllers\Ports\PortsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [NetworkController::class, 'index']);
+Route::get('/service/{serviceId}', [ServicesController::class, 'getService']);
+Route::get('/ports', [PortsController::class, 'getAllPorts']);
